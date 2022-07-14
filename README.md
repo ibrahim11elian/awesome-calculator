@@ -26,5 +26,5 @@ you can try it from here:
 ## Author
 
 - Frontend Mentor - [@ibrahim11elian](https://www.frontendmentor.io/profile/ibrahim11elian)
-- Facebook : (https://www.facebook.com/ibrahim11ahmed/)
-- Linkedin : (https://www.linkedin.com/in/ibrahim-ahmed-a8bba9196/)
+- Facebook : [@ibrahim11ahmed](https://www.facebook.com/ibrahim11ahmed/)
+- Linkedin : [@ibrahim-ahmed-a8bba9196](https://www.linkedin.com/in/ibrahim-ahmed-a8bba9196/)
