@@ -1,4 +1,4 @@
-##Awesome Calculator
+## Awesome Calculator
 
 This is a simple responsive calculator made with HTML and CSS, javscript, flexbox and CSS Grid with some transitions in it
 
