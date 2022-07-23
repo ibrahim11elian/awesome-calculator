@@ -22,25 +22,25 @@ let number = document.querySelectorAll(".container .keys .numb");
 
 let equation = ['', '', ''];
 
-for (const button of number) {
-    button.addEventListener('click', () => {
+number.forEach((ele) => {
+    ele.addEventListener('click', () => {
 
         if (equation[1] === '') {
             if (equation[0] === '0') {
                 equation[0] = '';
             }
-            equation[0] += button.textContent;
+            equation[0] += ele.textContent;
             updateInputUi(equation[0]);
         } else {
             if (equation[2] === '0') {
                 equation[2] = '';
             }
-            equation[2] += button.textContent;
+            equation[2] += ele.textContent;
             updateInputUi(equation[2]);
         }
 
     });
-}
+});
 
 let dicimal = document.querySelector("#dicimal");
 
@@ -72,7 +72,7 @@ function updateInputUi(str) {
 }
 
 let del = document.querySelector("#del-op");
-
+// del is for delete numbers one by one
 del.addEventListener("click", function () {
     if (equation[1] === '') {
         if (equation[0] !== '') {
@@ -106,21 +106,20 @@ clear.addEventListener("click", function () {
 });
 
 let operators = document.querySelectorAll(".container .keys .operator");
-
-
-for (const operator of operators) {
-    operator.addEventListener("click", () => {
+// event listen on operator buttons 
+operators.forEach((ele) => {
+    ele.addEventListener("click", () => {
         let x = parseFloat(equation[0]);
         let y = parseFloat(equation[2]);
-        if (operator.textContent === '+') {
-            chainCalc(x, y); // for checking if the user keep making operations without clicking '=' button
+        if (ele.textContent === '+') {
+            chainCalc(x, y);
             equation[1] = '+';
             updateInputUi("+");
-        } else if (operator.textContent === '-') {
+        } else if (ele.textContent === '-') {
             chainCalc(x, y);
             equation[1] = '-';
             updateInputUi('-');
-        } else if (operator.textContent === '/') {
+        } else if (ele.textContent === '/') {
             chainCalc(x, y);
             equation[1] = '/';
             updateInputUi('/');
@@ -130,36 +129,26 @@ for (const operator of operators) {
             updateInputUi('x');
         }
     });
-}
+});
 
 let equal = document.querySelector("#eq-op");
-
+// event listen on equal button
 equal.addEventListener("click", () => {
     if (equation[1] !== '') {
         let x = parseFloat(equation[0]);
         let y = parseFloat(equation[2]);
         let result = 0;
-        if (equation[1] === '+') {
-            equation[0] = add(x, y).toString();
-            equation[2] = '0';
-        } else if (equation[1] === '-') {
-            equation[0] = sub(x, y).toString();
-            equation[2] = '0';
-        } else if (equation[1] === '/') {
-            equation[0] = divid(x, y).toString();
-            equation[2] = '0';
-        } else {
-            equation[0] = mult(x, y).toString();
-            equation[2] = '0';
-        }
+        equation[0] = calc(x, equation[1], y).toString();
         updateOutputUi(equation[0]);
         equation[1] = '';
+        equation[2] = '0';
     } else {
         updateOutputUi(equation[0]);
     }
 
 });
 
+// calc function return the equation result 
 function calc(first, operation, second) {
     switch (operation) {
         case '+':
@@ -173,6 +162,7 @@ function calc(first, operation, second) {
     }
 }
 
+// for checking if the user keep making operations without clicking '=' button
 function chainCalc(x, y) {
     if (equation[1] !== '') {
         equation[0] = calc(x, equation[1], y).toString();
