@@ -165,10 +165,12 @@ function calc(first, operation, second) {
 // for checking if the user keep making operations without clicking '=' button
 function chainCalc(x, y) {
     if (equation[1] !== '') {
-        equation[0] = calc(x, equation[1], y).toString();
-        updateOutputUi(equation[0]);
-        equation[1] = '';
-        equation[2] = '0';
+        if (equation[0] !== '') {
+            equation[0] = calc(x, equation[1], y).toString();
+            updateOutputUi(equation[0]);
+            equation[1] = '';
+            equation[2] = '0';
+        }
     }
 }
 
@@ -180,4 +182,8 @@ function updateOutputUi(str) {
 
 let allButtons = document.querySelectorAll('button');
 
-allButtons.forEach(ele => ele.style.border = 'none');
+allButtons.forEach(ele => {
+    ele.addEventListener('click', () => {
+        ele.style.border = 'none';
+    });
+});
