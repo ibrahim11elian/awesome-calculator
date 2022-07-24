@@ -177,3 +177,7 @@ let output = document.querySelector(".output");
 function updateOutputUi(str) {
     output.textContent = str;
 }
+
+let allButtons = document.querySelectorAll('button');
+
+allButtons.forEach(ele => ele.style.border = 'none');

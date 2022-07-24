@@ -154,7 +154,8 @@ footer {
 @media (max-width: 575.98px) {
   .container {
     width: 300px;
-    height: calc(100vh - (30px + 100px));
+    height: calc(90vh - (30px + 100px));
+    margin-top: 5vh;
   }
   img {
     width: 50px;
@@ -162,6 +163,6 @@ footer {
 
   .title span {
     font-size: 20px;
-    padding-top: 15px;
+    padding-top: 20px;
   }
 }
